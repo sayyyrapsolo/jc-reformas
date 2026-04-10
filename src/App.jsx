@@ -43,7 +43,7 @@ export default function ConstruccionLandingPage() {
     {
       title: "Residencial Horizonte",
       category: "Vivienda",
-      result: "+32 viviendas entregadas",
+      result: "+250 viviendas entregadas",
       image: "/proyecto1.jpeg",
       alt: "Reforma residencial terminada en Madrid por JC Reformas",
     },
@@ -299,13 +299,13 @@ export default function ConstruccionLandingPage() {
                     href="#servicios"
                     className="flex-1 min-w-[140px] rounded-2xl bg-amber-400 px-6 py-3 text-sm font-semibold text-black shadow-md transition hover:scale-105 sm:flex-none"
                   >
-                    Servicios de reformas
+                    Servicios
                   </a>
                   <a
                     href="#proyectos"
                     className="flex-1 min-w-[140px] rounded-2xl border border-zinc-700 bg-black/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-amber-400 hover:text-amber-400 sm:flex-none"
                   >
-                    Proyectos realizados
+                    Proyectos
                   </a>
                   <a
                     href="#proceso"
@@ -317,7 +317,7 @@ export default function ConstruccionLandingPage() {
                     href="#contacto"
                     className="flex-1 min-w-[140px] rounded-2xl border border-zinc-700 bg-black/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-amber-400 hover:text-amber-400 sm:flex-none"
                   >
-                    Contacto y presupuesto
+                    Contacto
                   </a>
                 </nav>
               </div>
@@ -349,12 +349,7 @@ export default function ConstruccionLandingPage() {
                   </div>
                   <h3 className="mt-5 text-xl font-semibold">{service.title}</h3>
                   <p className="mt-3 leading-7 text-zinc-400">{service.desc}</p>
-                  <a
-                    href="#contacto"
-                    className="mt-5 inline-block text-sm font-medium text-amber-400"
-                  >
-                    Solicitar información sobre {service.title.toLowerCase()}
-                  </a>
+                
                 </article>
               ))}
             </div>
