@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from "react";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function ConstruccionLandingPage() {
   const siteUrl = "https://www.jcreformasmadrid.com";
@@ -608,6 +609,7 @@ export default function ConstruccionLandingPage() {
           </div>
         </footer>
       </div>
+      <Analytics />
     </>
   );
 }
