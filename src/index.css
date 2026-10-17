@@ -1,17 +1,36 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("/fonts/bodoni-moda.woff") format("woff");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/hanken-grotesk.woff") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --color-nogal: #1e1611;
-  --color-nogal-2: #2a201a;
-  --color-yeso: #edece8;
-  --color-yeso-2: #e2e0da;
-  --color-laton: #c9a24b;
-  --color-laton-claro: #e2c47c;
-  --color-grafito: #24201c;
-  --color-piedra: #6f675e;
+  --color-espresso: #15110d;
+  --color-nogal: #241c16;
+  --color-lino: #eeece8;
+  --color-lino-2: #e3e0da;
+  --color-roble: #b88a5a;
+  --color-roble-claro: #d9b88f;
+  --color-grafito: #1e1a17;
+  --color-humo: #75706a;
   --color-whatsapp: #1f9e55;
 
-  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html {
@@ -22,42 +41,170 @@ html {
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background: var(--color-yeso);
+  background: var(--color-lino);
   color: var(--color-grafito);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Titulares condensados, como rotulación de obra */
-.display {
-  font-stretch: 72%;
-  font-variation-settings: "wdth" 72;
-  font-weight: 760;
-  letter-spacing: -0.01em;
-  line-height: 0.95;
-  text-wrap: balance;
+::selection {
+  background: var(--color-roble);
+  color: var(--color-espresso);
 }
 
-.heading {
-  font-variation-settings: "wdth" 82;
-  font-weight: 700;
-  letter-spacing: -0.005em;
-  line-height: 1.05;
-  text-wrap: balance;
+.serif {
+  font-family: var(--font-serif);
+  font-weight: 420;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  font-feature-settings: "lnum";
+  text-wrap-style: balance;
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-laton);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline: 2px solid var(--color-roble);
+  outline-offset: 4px;
 }
 
-/* Listones verticales: guiño a las celosías de madera */
-.listones {
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgb(201 162 75 / 0.16) 0 2px,
-    transparent 2px 14px
-  );
+/* ---------- Hero ---------- */
+
+.hero-slide {
+  opacity: 0;
+  transition: opacity 1.6s var(--ease-suave);
+}
+.hero-slide[data-active="true"] {
+  opacity: 1;
+}
+.hero-slide img {
+  transform: scale(1.12);
+  transition: transform 9s linear;
+}
+.hero-slide[data-active="true"] img {
+  transform: scale(1);
+}
+
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+.hero-line > span {
+  display: block;
+}
+.js .hero-line > span {
+  transform: translateY(110%);
+  animation: subir 1.2s var(--ease-suave) forwards;
+}
+.js .hero-line:nth-child(2) > span {
+  animation-delay: 0.12s;
+}
+.js .hero-line:nth-child(3) > span {
+  animation-delay: 0.24s;
+}
+.js .hero-fade {
+  opacity: 0;
+  animation: aparecer 1s ease 0.7s forwards;
+}
+
+@keyframes subir {
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes aparecer {
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-progress[data-active="true"] > span {
+  animation: progreso 6.5s linear forwards;
+}
+@keyframes progreso {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- Apariciones al hacer scroll ---------- */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1s var(--ease-suave),
+    transform 1s var(--ease-suave);
+  transition-delay: var(--delay, 0s);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.js .reveal-img {
+  clip-path: inset(12% 6% 12% 6%);
+  transition: clip-path 1.4s var(--ease-suave);
+}
+.js .reveal-img img {
+  transform: scale(1.15);
+  transition: transform 1.8s var(--ease-suave);
+}
+.js .reveal-img.is-visible {
+  clip-path: inset(0 0 0 0);
+}
+.js .reveal-img.is-visible img {
+  transform: scale(1);
+}
+
+/* Palabras que se iluminan al leer */
+.word {
+  transition: color 0.5s ease;
+}
+.js .words .word {
+  color: rgb(30 26 23 / 0.18);
+}
+.js .words .word.is-lit {
+  color: var(--color-grafito);
+}
+
+/* ---------- Cinta de zonas ---------- */
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: cinta 45s linear infinite;
+}
+@keyframes cinta {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Carril de trabajos ---------- */
+
+.rail {
+  scrollbar-width: none;
+  scroll-padding-inline: 1.25rem;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+}
+@media (min-width: 768px) {
+  .rail {
+    scroll-padding-inline: 2.5rem;
+  }
+}
+.rail::-webkit-scrollbar {
+  display: none;
+}
+.rail.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+.rail > * {
+  scroll-snap-align: start;
 }
 
 details > summary {
@@ -71,17 +218,35 @@ details[open] .faq-icon {
 }
 
 dialog::backdrop {
-  background: rgb(15 11 8 / 0.92);
+  background: rgb(10 8 6 / 0.94);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+  .hero-slide img,
+  .js .reveal-img img {
+    transform: none !important;
+  }
+  .js .hero-line > span,
+  .js .hero-fade,
+  .js .reveal,
+  .js .reveal-img {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .js .words .word {
+    color: var(--color-grafito);
+  }
+  .marquee {
+    animation: none;
+  }
   *,
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
   }
 }

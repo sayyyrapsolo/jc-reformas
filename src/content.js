@@ -14,27 +14,40 @@ export const services = [
   {
     title: "Reformas integrales",
     desc: "Pisos, locales y oficinas de principio a fin: demolición, instalaciones, albañilería, suelos, carpintería y pintura, con un único interlocutor.",
+    img: 5,
   },
   {
-    title: "Carpintería y revestimientos de madera",
+    title: "Carpintería y madera",
     desc: "Paredes en espiga, celosías de listones, tarimas y puertas. El detalle en madera es donde más se nota un buen remate.",
+    img: 1,
+  },
+  {
+    title: "Reforma de baños",
+    desc: "Platos de ducha, revestimientos, sanitarios y fontanería: el baño completo con un solo equipo.",
+    img: 7,
   },
   {
     title: "Fontanería e instalaciones",
     desc: "Renovación de tuberías y saneamientos antes de cerrar paredes y suelos, para no tener que volver a levantar nada.",
+    img: 9,
   },
   {
-    title: "Obra nueva y rehabilitación",
-    desc: "Proyectos residenciales y comerciales con planificación de fases, control de costes y plazos realistas.",
+    title: "Locales y oficinas",
+    desc: "Espacios de trabajo funcionales, con plazos ajustados a tu actividad para que el cierre dure lo mínimo.",
+    img: 6,
   },
   {
-    title: "Mantenimiento técnico",
-    desc: "Reparaciones preventivas y correctivas para comunidades, naves y edificios.",
+    title: "Obra nueva y mantenimiento",
+    desc: "Proyectos residenciales y comerciales, rehabilitación y mantenimiento técnico de comunidades, naves y edificios.",
+    img: 4,
   },
-  {
-    title: "Dirección de obra",
-    desc: "Coordinamos los gremios y te mantenemos informado de cada avance, sin que tengas que perseguir a nadie.",
-  },
+];
+
+export const heroSlides = [
+  { id: 2, caption: "Celosía de listones en un pasillo" },
+  { id: 1, caption: "Revestimiento de madera en espiga" },
+  { id: 7, caption: "Suelo de ducha en tarima" },
+  { id: 6, caption: "Oficina con suelo en tono nogal" },
 ];
 
 export const works = [
