@@ -1,11 +1,87 @@
 @import "tailwindcss";
 
+@theme {
+  --color-nogal: #1e1611;
+  --color-nogal-2: #2a201a;
+  --color-yeso: #edece8;
+  --color-yeso-2: #e2e0da;
+  --color-laton: #c9a24b;
+  --color-laton-claro: #e2c47c;
+  --color-grafito: #24201c;
+  --color-piedra: #6f675e;
+  --color-whatsapp: #1f9e55;
+
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #09090b;
+  font-family: var(--font-sans);
+  background: var(--color-yeso);
+  color: var(--color-grafito);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Titulares condensados, como rotulación de obra */
+.display {
+  font-stretch: 72%;
+  font-variation-settings: "wdth" 72;
+  font-weight: 760;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.heading {
+  font-variation-settings: "wdth" 82;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-laton);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Listones verticales: guiño a las celosías de madera */
+.listones {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(201 162 75 / 0.16) 0 2px,
+    transparent 2px 14px
+  );
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+dialog::backdrop {
+  background: rgb(15 11 8 / 0.92);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
